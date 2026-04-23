@@ -1,7 +1,7 @@
 # Garden Assistant Bot (GAB)
 
 This project includes a robot which uses a variety of sensors & motors to measure and provide data from your garden plants, as well as a user interface for communicating and controlling the robot.
-
+ 
 ---
 
 ##  Visual Overview of GAB Project
