@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rc_controller", "src\desktop-app\rc_controller.csproj", "{9304FD47-E3B5-4C00-961B-9C383B7B4F8E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rc_controller", "rc_controller\rc_controller.csproj", "{9304FD47-E3B5-4C00-961B-9C383B7B4F8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
