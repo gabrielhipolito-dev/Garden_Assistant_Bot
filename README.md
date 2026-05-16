@@ -1,6 +1,6 @@
 # Garden Assistant Bot (GAB)
 
-[![CI](https://github.com/gabrielhipolito-dev/Garden_Assistant_Bot/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/gabrielhipolito-dev/Garden_Assistant_Bot/actions/workflows/ci.yml)
+[![Build](https://github.com/gabrielhipolito-dev/Garden_Assistant_Bot/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/gabrielhipolito-dev/Garden_Assistant_Bot/actions/workflows/build.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Garden Assistant Bot (GAB) is a Bluetooth-controlled rover with a multi-axis servo arm and environmental sensors. A WPF desktop app drives the robot and displays live readings for soil moisture, temperature, humidity, and battery voltage.
@@ -76,7 +76,7 @@ Protocol details: [docs/communication-protocol.md](docs/communication-protocol.m
 
 ## CI workflow
 
-GitHub Actions builds the WPF app on Windows for every push and pull request using `dotnet build`.
+GitHub Actions builds the WPF app on Windows for every push and pull request using MSBuild in Debug and Release.
 
 ## Project status / roadmap
 
