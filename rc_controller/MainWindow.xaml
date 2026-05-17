@@ -283,7 +283,7 @@
                  Background="Transparent" Foreground="White" BorderBrush="Transparent"
                  IsReadOnly="True" Text="Servo Control" FontFamily="Consolas" FontSize="24" Canvas.Left="1016" Canvas.Top="120"/>
 
-		<Grid HorizontalAlignment="Center" Height="262" Canvas.Left="588" Canvas.Top="348" VerticalAlignment="Top" Width="320">
+		<Grid HorizontalAlignment="Center" Height="300" Canvas.Left="588" Canvas.Top="348" VerticalAlignment="Top" Width="320">
 			<!-- Sensor Buttons -->
 			<Button Height="52" Width="194" HorizontalAlignment="Left" VerticalAlignment="Top"
                     Style="{StaticResource RoundedHoverButton}"
@@ -321,6 +321,11 @@
 			<TextBox x:Name="TemperatureTextBox" Width="97" Height="32" HorizontalAlignment="Left" VerticalAlignment="Top"
                 Background="Transparent" Foreground="White" BorderBrush="Transparent"
                 IsReadOnly="True" Text="----" FontFamily="Consolas" FontSize="24" Margin="223,220,0,0"/>
+
+			<TextBox x:Name="SensorStatusTextBox" Width="320" Height="28" HorizontalAlignment="Left" VerticalAlignment="Top"
+                Background="Transparent" Foreground="LimeGreen" BorderBrush="Transparent"
+                IsReadOnly="True" Text="Sensor status: OK" FontFamily="Consolas" FontSize="16" Margin="0,255,0,0"
+				HorizontalContentAlignment="Center"/>
 		</Grid>
 		<TextBox Width="114" Height="40"
             Background="Transparent" Foreground="White" BorderBrush="Transparent"

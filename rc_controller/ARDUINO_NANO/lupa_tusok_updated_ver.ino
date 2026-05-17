@@ -15,6 +15,7 @@ int motorSpdR[] = {0, 153, 210, 253}; // adjusted to ensure approximately same v
 const int battPin = A0, soilPin = A3, soilVCC = A4, dhtPin = A2;
 float temp = 0.0, hum = 0.0;
 DHT dht(dhtPin, DHTTYPE);
+unsigned int sensorSeq = 0;
 
 // servo config
 const int servoA = 4, servoB = 3, servoR = 2, l_limit = 55, u_limit = 195;
@@ -179,10 +180,33 @@ void loop()
 }
 
 // ---------------------------------------------- // 
+byte computeChecksum(const String &payload){
+  byte checksum = 0;
+  for (unsigned int i = 0; i < payload.length(); i++){
+    checksum ^= payload[i];
+  }
+  return checksum;
+}
+
+String toHex(byte value){
+  char buffer[3];
+  snprintf(buffer, sizeof(buffer), "%02X", value);
+  return String(buffer);
+}
+
+void sendSensorFrame(const char *key, float value){
+  sensorSeq++;
+  String payload = "S|" + String(sensorSeq) + "|" + String(key) + "=" + String(value, 2);
+  byte checksum = computeChecksum(payload);
+  String frame = "<" + payload + "|" + toHex(checksum) + ">";
+  Serial.println(frame);
+}
+
+// ---------------------------------------------- // 
 void checkBatt(){
   float fivevoltpinval = 5.0;
   float batt = (analogRead(battPin)*5*fivevoltpinval/1024.00)+0.04;
-  Serial.println(String(batt));
+  sendSensorFrame("V", batt);
   return;
 }
 
@@ -193,7 +217,7 @@ void checkMoisture(){
   delay(50);
   float moist = analogRead(soilPin);
   float moistval = 100.00 - 100*(moist-386)/(1007-386);
-  Serial.println(String(constrain(moistval, 0, 100)));
+  sendSensorFrame("M", constrain(moistval, 0, 100));
   delay(250);
   digitalWrite(soilVCC, LOW);
   return;
@@ -201,13 +225,13 @@ void checkMoisture(){
 
 void checkTemp(){
   temp = dht.readTemperature();
-  Serial.println(String(temp));
+  sendSensorFrame("T", temp);
   return;
 }
 
 void checkHum(){
   hum = dht.readHumidity();
-  Serial.println(String(hum));
+  sendSensorFrame("H", hum);
   return;
 }
 
